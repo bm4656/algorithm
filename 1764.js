@@ -4,21 +4,26 @@ const filePath =
 let input = fs.readFileSync(filePath).toString().split("\n");
 
 const [n, m] = input[0].split(" ").map(Number);
-const d = [];
-const b = [];
-const answer = [];
+
+var listen = new Set();
+var look = new Set();
+
 for (var i = 1; i <= n; i++) {
-  d.push(input[i]);
+  listen.add(input[i]);
 }
 for (var i = n + 1; i <= m + n; i++) {
-  b.push(input[i]);
+  look.add(input[i]);
 }
-d.map((j) => {
-  for (var k = 0; k < b.length; k++) {
-    if (j === b[k]) {
-      answer.push(j);
-    }
-  }
-});
 
-console.log(answer.length + "\n" + answer.sort().join("\n"));
+var answer = new Set([...listen].filter((x) => look.has(x)));
+console.log(answer.size);
+answer = [...answer].sort();
+console.log(answer.join("\n"));
+// 3 4
+// ohhenrie
+// charlie
+// baesangwook
+// obama
+// baesangwook
+// ohhenrie
+// clinton
