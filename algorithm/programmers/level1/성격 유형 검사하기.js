@@ -50,3 +50,5 @@ function solution(survey, choices) {
   // console.log(answer);
   return answer;
 }
+
+//소요시간 35분

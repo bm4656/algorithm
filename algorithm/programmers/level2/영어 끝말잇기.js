@@ -27,5 +27,4 @@ function solution(n, words) {
   }
   return answer;
 }
-
 //1시간30분 소요
