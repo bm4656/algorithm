@@ -2,19 +2,19 @@
 //오름차순으로 정렬하여 이어서 출력한 뒤에, 그 뒤에 모든 숫자를 더한 값을 이어서 출력합니다.
 //예를 들어 K1KA5CB7이라는 값이 들어오면 ABCKK13을 출력합니다.
 
-const number = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+// const number = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 function solution(string) {
   const arr = string.split('');
   let sum = 0;
   arr.forEach((i) => {
-    if (number.includes(Number(i))) {
+    if (Number(i)) {
       sum = sum + Number(i);
     }
   });
   return (
     arr
-      .filter((i) => !number.includes(Number(i)))
+      .filter((i) => !Number(i))
       .sort()
       .join('') + sum
   );
