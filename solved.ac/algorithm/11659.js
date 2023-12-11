@@ -1,21 +1,22 @@
 const fs = require('fs');
 const filePath =
   process.platform === 'linux' ? '/dev/stdin' : __dirname + '/../input.txt';
-let [fir, sec, ...arr] = fs
-  .readFileSync(filePath)
-  .toString()
-  .trim()
-  .split('\n');
-let [N, M] = fir.split(' ');
-let nums = sec.split(' ').map(Number);
-let result = [];
-let sum = 0;
+const input = fs.readFileSync(filePath).toString().trim().split('\n');
+const arr = input[1].split(' ').map(Number);
+const sumArr = new Array(arr.length + 1).fill(0);
+const solution = [];
 
-arr.forEach((elem) => {
-  let [start, end] = elem.split(' ').map(Number);
-  let newNums = nums.slice(start - 1, end).map((v) => (sum += v));
-  result.push(newNums[newNums.length - 1]);
-  sum = 0;
+arr.forEach((v, i) => {
+  sumArr[i + 1] = sumArr[i] + v;
+});
+// sumArr = [0, 5, 9, 12, 14, 15]
+// 각 요소 sumArr[i]는 arr의 i번째 수까지의 합
+
+input.slice(2).forEach((el) => {
+  const [i, j] = el.split(' ').map(Number);
+  solution.push(sumArr[j] - sumArr[i - 1]);
 });
 
-console.log(result.join('\n'));
+console.log(solution.join('\n'));
+
+//reduce, map 사용하여 구간 합 구하면 메모리 초과남!
