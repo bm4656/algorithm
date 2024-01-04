@@ -31,5 +31,6 @@ function findElement(arr, n) {
 }
 
 const arr = [5, 1, 4, 3, 6, 8, 10, 7, 9];
+// const arr = [5, 1, 4, 4];
 const n = arr.length;
 console.log(findElement(arr, n));
